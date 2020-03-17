@@ -12,6 +12,11 @@ namespace MyBlog.Data.Model
         {
 
         }
+        public BlogDbContext(string connectionString) : base(connectionString)
+
+        {
+
+        }
 
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
