@@ -23,8 +23,8 @@ namespace MyBlogAppUI.Controllers
 
 
         }
-        private DataService _Service;
-        public DataService Service
+        private static DataService _Service;
+        public static DataService Service
         {
             get
             {

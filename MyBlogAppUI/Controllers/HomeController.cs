@@ -1,4 +1,5 @@
-﻿using MyBlog.Data.Model;
+﻿
+using MyBlog.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,42 +14,16 @@ namespace MyBlogAppUI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            GetAllCategories();
-            return View();
+            var data = Service.ArticleManager.GetArticles().ToList();
+
+            return View(data);
         }
         public PartialViewResult PopularArticles()
         {
-            GetAllArticlesWithArticles();
-            var popularArticles = Db.Articles.OrderByDescending(x => x.CreateDate).Take(4).ToList();
-            return PartialView(popularArticles);
+            var data = Service.ArticleManager.GetPopularArticles();
+            return PartialView("PopularArticles", data);
         }
-
-        public void GetAllArticles()
-        {
-          var data= Db.Articles.ToList();
-        }
-        public void GetAllArticlesWithArticles()
-        {
-        string sqlQuery = @"
-        select * from Article
-                ";
-           var data= Db.Database.SqlQuery<Article>(sqlQuery).ToList();
-            var firstData = Db.Database.SqlQuery<Article>(sqlQuery).FirstOrDefault();
-        }
-        public void GetArticlesWithArticleId(int id)
-        {
-    string sqlQuery = @"
-Declare @id INT={0}
-select * from Article
-where ArticleId=@id";
-            var data = Db.Database.SqlQuery<Article>(sqlQuery,id).ToList();
-
-        }
-       public  List<Category> GetAllCategories()
-        {
-            var data = Service.CategoryManager.GetAllCategories();
-            return data;
-        }
+       
 
     }
 }

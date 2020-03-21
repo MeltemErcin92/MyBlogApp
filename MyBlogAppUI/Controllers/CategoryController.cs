@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBlog.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,11 +12,13 @@ namespace MyBlogAppUI.Controllers
         // GET: Category
         public ActionResult Index()
         {
+            getCategories();
             return View();
         }
-        public void getCategories()
+        public PartialViewResult getCategories()
         {
-            var data = Db.Categories.ToList();
+            var data = Service.CategoryManager.GetAllCategories().ToList();
+            return PartialView("CategoryPartialView",data);
         }
     }
 }

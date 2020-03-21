@@ -1,23 +1,25 @@
-﻿@using MyBlog.Data.Model
+﻿
+@using MyBlog.Data.Model
 @model IEnumerable<Article>
-
 <div class="sidebox widget">
-    <h3 class="widget-title section-title">Popular Posts</h3>
+    <h3 class="widget-title section-title">Popüler Makaleler</h3>
     <ul class="post-list">
         @foreach (Article article in Model)
         {
-        <li>
-            <div class="icon-overlay"> <a href="blog-post.html"><img src="style/images/art/a1.jpg" alt="" /> </a> </div>
-            <div class="meta">
-                <h5><a href="blog-post.html">@article.Header</a></h5>
-                <em>@article.CreateDate <span class="comments"><a href="#">
-                    @article.Comments.Count
-                    <i class="icon-chat-1"></i></a></span></em>
+            <li>
+                <div class="icon-overlay"> <a href="blog-post.html"><img src="style/images/art/a1.jpg" alt="" /> </a> </div>
+                <div class="meta">
+                    <h5><a href="blog-post.html">@article.Header</a></h5>
+                    <em>
+                        @article.CreateDate <span class="comments">
+                        <a href="#">
+                            @article.Comments.Count
+                            <i class="icon-chat-1"></i>
+                        </a>
+                    </span>
+                </em>
             </div>
         </li>
-        }
-        
-       
+    }
     </ul>
-    <!-- /.post-list -->
 </div>

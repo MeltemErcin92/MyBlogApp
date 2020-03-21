@@ -1,7 +1,9 @@
-﻿
+﻿@using MyBlog.Data.Model
+@model List<Article>
 @{
     ViewBag.Title = "Anasayfa";
 }
+@Html.Partial("ArticlePartialview", Model);
 
 @section PopularArticles
     {
@@ -11,5 +13,17 @@
     }
 }
 
+@section Categories
+    {
+    @{
+        Html.RenderAction("getCategories", "Category");
+    }
+}
+@section Tags
+    {
+    @{
+        Html.RenderAction("GetAllTags", "Tag");
+    }
+}
 
 

@@ -1,0 +1,27 @@
+﻿@using MyBlog.Data.Model
+@model IEnumerable<Article>
+
+<div class="blog-posts col-blog">
+    @foreach (Article a in Model)
+    {
+        <div class="post row">
+            <div class="col-sm-4">
+                <figure>
+                    <a href="blog-post.html">
+                        <div class="text-overlay">
+                            <div class="info"><span>Daha Fazla</span></div>
+                        </div>
+                        <img src="style/images/art/b1.jpg" alt="" />
+                    </a>
+                </figure>
+            </div>
+            <div class="col-sm-8 post-content">
+                <div class="meta"><span class="date">@a.CreateDate.ToShortDateString()</span><span class="comments"><a href="#">@a.Comments.Count <i class="icon-chat-1"></i></a></span></div>
+                <h2 class="post-title"><a href="blog-post.html">@a.Header</a></h2>
+                <p>@MyBlogAppUI.Helpers.Helper.ShortenContent(a.Content)</p>
+            </div>
+        </div>
+    }
+
+
+</div>

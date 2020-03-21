@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataService.cs" />
+    <Compile Include="Manager\ArticleManager.cs" />
     <Compile Include="Manager\BaseManager.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
+    <Compile Include="Manager\TagManager.cs" />
     <Compile Include="Model\Article.cs" />
     <Compile Include="Properties\BlogDbContext.cs" />
     <Compile Include="Model\Category.cs" />

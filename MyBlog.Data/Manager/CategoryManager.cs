@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyBlogAppUI.Manager
+namespace MyBlog.Data.Manager
 {
     public class CategoryManager:BaseManager
     {
-        public CategoryManager(BlogDbContext ctx=null):base(ctx)
+        public CategoryManager(BlogDbContext ctx):base(ctx)
         {
 
         }
