@@ -12,7 +12,10 @@
         Html.RenderAction("PopularArticles", "Home");
     }
 }
-
+@section About
+    {
+    @Html.Partial("AboutUsPartialView")
+    }
 @section Categories
     {
     @{

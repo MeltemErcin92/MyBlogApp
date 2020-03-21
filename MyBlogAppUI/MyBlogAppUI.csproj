@@ -377,6 +377,7 @@
     <Content Include="Views\Category\CategoryPartialView.cshtml" />
     <Content Include="Views\Tag\TagPartialView.cshtml" />
     <Content Include="Views\Shared\ArticlePartialView.cshtml" />
+    <Content Include="Views\Shared\AboutUsPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
