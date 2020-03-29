@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Data.Manager
 {
-  public class ArticleManager : BaseManager
+    public class ArticleManager : BaseManager
     {
         public ArticleManager(BlogDbContext ctx) : base(ctx)
         {
@@ -24,6 +24,13 @@ namespace MyBlog.Data.Manager
         {
             return _Context.Articles.OrderByDescending(x => x.CreateDate).ToList();
         }
-
+        public List<Article> GetArticlesByCatId(int CatId)
+        {
+            return _Context.Articles.Where(_ => _.CategoryId == CatId).ToList();
+        }
+        public Article ArticleDetail(int id)
+        {
+            return _Context.Articles.SingleOrDefault(_ => _.ArticleId == id);
+        }
     }
 }

@@ -1,11 +1,11 @@
 ﻿@using MyBlog.Data.Model
 @model List<Tag>
 <div class="sidebox widget">
-    <h3 class="widget-title section-title">Tags</h3>
+    <h3 class="widget-title section-title">ETIKET BULUTU</h3>
     <ul class="tag-list">
         @foreach (Tag t in Model)
         {
-            <li><a href="Article/Detail/@t.TagId">@t.TagName</a></li>
+            <li><a href="/Tag/Index/@t.TagId">@t.TagName</a></li>
         }
 
 

@@ -1,0 +1,3 @@
+﻿SmallImage=70*70
+MediumImage=237*237
+LargeImage=770*440

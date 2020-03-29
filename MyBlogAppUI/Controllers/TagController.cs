@@ -9,15 +9,20 @@ namespace MyBlogAppUI.Controllers
     public class TagController : BaseController
     {
         // GET: Tag
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            return View(id);
         }
         public PartialViewResult GetAllTags()
         {
           var data= Service.TagManager.GetAllTags();
             return PartialView("TagPartialView", data);
 
+        }
+        public PartialViewResult GetArticlesWithTags(int id)
+        {
+            var data = Service.TagManager.GetArticlesWithTags(id);
+            return PartialView("ArticlePartialView", data);
         }
     }
 }

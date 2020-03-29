@@ -318,6 +318,15 @@
     <Content Include="Content\style\type\fontello\fontello-social.svg" />
     <Content Include="Content\style\type\fontello\fontello.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Article\Large\cssLarge.png" />
+    <Content Include="Images\Article\Large\EFLarge.png" />
+    <Content Include="Images\Article\Large\htmlLarge.png" />
+    <Content Include="Images\Article\Medium\cssMedium.png" />
+    <Content Include="Images\Article\Medium\EFMedium.png" />
+    <Content Include="Images\Article\Medium\htmlMedium.png" />
+    <Content Include="Images\Article\Small\cssSmall.png" />
+    <Content Include="Images\Article\Small\EFSmall.png" />
+    <Content Include="Images\Article\Small\htmlSmall.png.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -378,6 +387,11 @@
     <Content Include="Views\Tag\TagPartialView.cshtml" />
     <Content Include="Views\Shared\ArticlePartialView.cshtml" />
     <Content Include="Views\Shared\AboutUsPartialView.cshtml" />
+    <Content Include="Views\Shared\SearchBoxPartialView.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Tag\Index.cshtml" />
+    <Content Include="Views\Home\ArticleDetail.cshtml" />
+    <Content Include="Views\Shared\NavigationBarPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -387,6 +401,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Author\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

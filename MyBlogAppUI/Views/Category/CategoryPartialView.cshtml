@@ -2,12 +2,12 @@
 @model List<Category> 
 
     <div class="sidebox widget">
-        <h3 class="widget-title section-title">Categories</h3>
+        <h3 class="widget-title section-title">KATEGORILER</h3>
         <ul class="circled">
             @foreach (Category c in Model)
             {
                 <li>
-                    <a href="/Article/Detail/@c.CategoryId">
+                    <a href="/Category/Index/@c.CategoryId">
                         @c.CategoryName (@c.Articles.Count)
                     </a>
                 </li>

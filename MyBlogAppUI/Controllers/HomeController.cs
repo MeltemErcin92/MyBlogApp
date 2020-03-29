@@ -24,6 +24,11 @@ namespace MyBlogAppUI.Controllers
             return PartialView("PopularArticles", data);
         }
        
+        public ActionResult ArticleDetail(int id)
+        {
+            var article = Service.ArticleManager.ArticleDetail(id);
+            return View(article);
 
+        }
     }
 }

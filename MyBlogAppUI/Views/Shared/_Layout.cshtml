@@ -20,78 +20,12 @@
           <script src="/Content/stylejs/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
           <![endif]-->
-    @RenderSection("headsection", false);
+    @RenderSection("headsection", false)
 </head>
 <body>
     <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
     <div class="body-wrapper">
-        <div class="navbar default">
-            <div class="navbar-header">
-                <div class="container">
-                    <div class="basic-wrapper">
-                        <a class="btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
-                        <div class="navbar-brand"><a href="index.html"><img src="/Content/styleimages/logo.png" alt="" data-src="/Content/styleimages/logo.png" data-ret="style/images/logo@2x.png" class="retina" /></a></div>
-                    </div>
-                    <nav class="collapse navbar-collapse pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current dropdown">
-                                <a href="#" class="dropdown-toggle js-activated">Journal</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="blog.html">List View</a></li>
-                                    <li><a href="blog2.html">Classic View</a></li>
-                                    <li><a href="blog3.html">Grid View 2 Columns</a></li>
-                                    <li><a href="blog4.html">Grid View 3 Columns</a></li>
-                                    <li><a href="blog-post.html">Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle js-activated">Our Works</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="portfolio.html">Classic Portfolio</a></li>
-                                    <li><a href="portfolio2.html">Fullscreen Portfolio</a></li>
-                                    <li><a href="portfolio-post.html">Post with Images</a></li>
-                                    <li><a href="portfolio-post2.html">Post with Columns</a></li>
-                                    <li><a href="portfolio-post3.html">Post with Video</a></li>
-                                    <li><a href="portfolio-post4.html">Post with Slider</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle js-activated">Pages</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle js-activated">Features</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="elements.html">Elements</a></li>
-                                    <li><a href="headings.html">Headings</a></li>
-                                    <li><a href="pricing.html">Pricing Tables</a></li>
-                                    <li><a href="flat-icons.html">Flat Icons</a></li>
-                                    <li><a href="font-icons.html">Font Icons</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li class="dropdown social-dropdown pull-right">
-                                <div class="share btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="icon-heart-1"></i></div>
-                                <ul class="button-group dropdown-menu dropdown-menu-right share-links">
-                                    <li><a href="#" class="btn"><i class="icon-s-facebook"></i></a></li>
-                                    <li><a href="#" class="btn"><i class="icon-s-twitter"></i></a></li>
-                                    <li><a href="#" class="btn"><i class="icon-s-pinterest"></i></a></li>
-                                </ul>
-                            </li>
-                            <!--/social-dropdown -->
-                        </ul>
-                        <!--/.navbar-nav -->
-                    </nav>
-                    <!--/.nav-collapse -->
-                </div>
-                <!--/.container -->
-            </div>
-            <!--/.navbar-header -->
-        </div>
+        @Html.Partial("NavigationBarPartialView")
         <!--/.navbar -->
         <div class="offset"></div>
         <div class="dark-wrapper page-title">
@@ -108,7 +42,7 @@
                   @RenderBody()
                     <!-- /.blog-posts -->
 
-                    <div class="pagination">
+                    @*<div class="pagination">
                         <ul>
                             <li><a href="#" class="btn">Prev</a></li>
                             <li class="active"><a href="#" class="btn"><span>1</span></a></li>
@@ -116,20 +50,26 @@
                             <li><a href="#" class="btn"><span>3</span></a></li>
                             <li><a href="#" class="btn">Next</a></li>
                         </ul>
-                    </div>
+                    </div>*@
                     <!-- /.pagination -->
 
                 </div>
                 <!-- /.content -->
                 <aside class="col-sm-4 sidebar lp30">
-                    @RenderSection("PopularArticles")
-                    @RenderSection("Categories")
-                    @RenderSection("Tags")
-                    @RenderSection("About")
-                    @RenderSection("SearchBox")
-                    @*
+                    @Html.Partial("AboutUsPartialView")
+                    @Html.Partial("SearchBoxPartialView")
 
-        @RenderSection("Customtext")*@
+                    @Html.Action("PopularArticles", "Home")
+
+                    @Html.Action("GetAllTags", "Tag")
+
+                    @Html.Action("getCategories", "Category")
+
+                    @*@RenderSection("PopularArticles")*@
+                    @*@RenderSection("Categories")*@
+                    @*@RenderSection("About")*@
+                    @*@RenderSection("SearchBox")*@
+                    @*@RenderSection("Tags")*@
                 </aside>
                 <!-- /.col-sm-4 .sidebar -->
 
@@ -255,6 +195,6 @@
     <!--/.body-wrapper -->
    
     @Scripts.Render("~/Content/LayoutScript")
-    @RenderSection("script", false);
+    @RenderSection("script", false)
 </body>
 </html>

@@ -10,15 +10,20 @@ namespace MyBlogAppUI.Controllers
     public class CategoryController : BaseController
     {
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             getCategories();
-            return View();
+            return View(id);
         }
         public PartialViewResult getCategories()
         {
             var data = Service.CategoryManager.GetAllCategories().ToList();
             return PartialView("CategoryPartialView",data);
+        }
+        public PartialViewResult GetArticlesWithCategory(int id)
+        {
+            var data = Service.ArticleManager.GetArticlesByCatId(id);
+            return PartialView("ArticlePartialView", data);
         }
     }
 }

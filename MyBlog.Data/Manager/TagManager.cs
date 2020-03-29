@@ -17,5 +17,22 @@ namespace MyBlog.Data.Manager
             string sqlQuery = "select * from Tag";
             return _Context.Database.SqlQuery<Tag>(sqlQuery).ToList();
         }
+        public List<Article> GetArticlesWithTags(int tagId)
+        {
+       
+//            string sqlQuery = @"
+//                                DECLARE @id int
+
+//SELECT * FROM Article a LEFT JOIN dbo.ArticleTag at ON a.ArticleId=at.ArticleId
+//WHERE at.TagId=@id
+//";
+
+            //var data = _Context.Database.SqlQuery<Article>(sqlQuery, id).ToList();
+         
+
+            //return data;   
+            //sql sorgusu iler çağır
+          return  _Context.Articles.Where(_ => _.Tags.Any(t => t.TagId == tagId)).ToList();
+        }
     }
 }
