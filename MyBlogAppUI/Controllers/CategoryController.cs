@@ -12,7 +12,7 @@ namespace MyBlogAppUI.Controllers
         // GET: Category
         public ActionResult Index(int id)
         {
-            getCategories();
+            
             return View(id);
         }
         public PartialViewResult getCategories()

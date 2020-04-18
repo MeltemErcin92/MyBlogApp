@@ -1,0 +1,52 @@
+﻿<footer class="footer black-wrapper">
+    <div class="container inner">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="widget">
+                    @Html.Action("PopularArticles", "Home")
+                    <!-- /.post-list -->
+                </div>
+                <!-- /.widget -->
+            </div>
+            <!-- /column -->
+            <!-- /column -->
+            <div class="col-sm-3" >
+                <div class="widget style="margin-left:50px"">
+                    @Html.Action("getCategories", "Category")
+                    <!-- /.tag-list -->
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="widget">
+                    @Html.Action("GetAllTags", "Tag")
+                </div>
+            </div>
+            <!-- /column -->
+            <div class="col-sm-3">
+                <div class="widget">
+                    @Html.Partial("AboutUsPartialView")
+                </div>
+                <!-- /.widget -->
+            </div>
+
+            <!-- /column -->
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- .container -->
+
+    <div class="sub-footer">
+        <div class="container">
+            <p class="pull-left">© 2020 Tüm hakları Dream Yazılıma ailttir. All rights reserved. Theme by <a href="http://elemisfreebies.com/">elemis</a>.</p>
+            <ul class="footer-menu pull-right">
+                <li><a href="/Home/Index">Anasayfa</a></li>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

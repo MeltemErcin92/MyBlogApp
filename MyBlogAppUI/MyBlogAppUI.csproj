@@ -122,9 +122,54 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\assets\global\css\components-md.min.css" />
+    <Content Include="Content\Admin\assets\global\css\plugins-md.min.css" />
+    <Content Include="Content\Admin\assets\global\plugins\backstretch\jquery.backstretch.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\bootstrap-switch\css\bootstrap-switch.min.css" />
+    <Content Include="Content\Admin\assets\global\plugins\bootstrap-switch\js\bootstrap-switch.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Admin\assets\global\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Admin\assets\global\plugins\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\jquery-validation\js\additional-methods.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\jquery-validation\js\jquery.validate.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\jquery.blockui.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\jquery.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\js.cookie.min.js" />
+    <Content Include="Content\Admin\assets\global\plugins\simple-line-icons\fonts\simple-line-icons.min.css" />
+    <Content Include="Content\Admin\assets\global\plugins\simple-line-icons\simple-line-icons.min.css" />
+    <Content Include="Content\Admin\assets\global\scripts\app.js" />
+    <Content Include="Content\Admin\assets\global\scripts\app.min.js" />
+    <Content Include="Content\Admin\assets\global\select2\css\select2-bootstrap.min.css" />
+    <Content Include="Content\Admin\assets\global\select2\css\select2.min.css" />
+    <Content Include="Content\Admin\assets\global\select2\js\select2.full.min.js" />
+    <Content Include="Content\Admin\assets\layouts\global\scripts\quick-nav.min.js" />
+    <Content Include="Content\Admin\assets\layouts\global\scripts\quick-sidebar.min.js" />
+    <Content Include="Content\Admin\assets\layouts\layout4\css\custom.min.css" />
+    <Content Include="Content\Admin\assets\layouts\layout4\css\themes\default.min.css" />
+    <Content Include="Content\Admin\assets\layouts\layout4\css\layout.min.css" />
+    <Content Include="Content\Admin\assets\layouts\layout4\img\logo-light.png" />
+    <Content Include="Content\Admin\assets\layouts\layout4\scripts\demo.min.js" />
+    <Content Include="Content\Admin\assets\layouts\layout4\scripts\layout.min.js" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar1.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar10.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar11.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar2.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar3.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar4.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar6.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar7.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar8.jpg" />
+    <Content Include="Content\Admin\assets\layouts\layout\img\avatar9.jpg" />
+    <Content Include="Content\Admin\assets\layouts\scripts\demo.min.js" />
+    <Content Include="Content\Admin\assets\layouts\scripts\layout.min.js" />
+    <Content Include="Content\Admin\assets\layouts\scripts\quick-nav.min.js" />
+    <Content Include="Content\Admin\assets\layouts\scripts\quick-sidebar.min.js" />
+    <Content Include="Content\Admin\assets\pages\css\login-4.min.css" />
+    <Content Include="Content\Admin\assets\pages\img\logo-big.png" />
+    <Content Include="Content\Admin\assets\pages\scripts\login-4.min.js" />
     <Content Include="Content\blog.html" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\style\css\blank.html" />
     <Content Include="Content\style\css\bootstrap.min.css" />
     <Content Include="Content\style\css\color\red.css" />
     <Content Include="Content\style\css\fancybox_loading%402x.html" />
@@ -320,13 +365,17 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Article\Large\cssLarge.png" />
     <Content Include="Images\Article\Large\EFLarge.png" />
+    <Content Include="Images\Article\Large\htmlElemantaryLarge.png" />
     <Content Include="Images\Article\Large\htmlLarge.png" />
     <Content Include="Images\Article\Medium\cssMedium.png" />
     <Content Include="Images\Article\Medium\EFMedium.png" />
+    <Content Include="Images\Article\Medium\htmlElemantaryMedium.png" />
     <Content Include="Images\Article\Medium\htmlMedium.png" />
     <Content Include="Images\Article\Small\cssSmall.png" />
     <Content Include="Images\Article\Small\EFSmall.png" />
+    <Content Include="Images\Article\Small\htmlElemantarySmall.png" />
     <Content Include="Images\Article\Small\htmlSmall.png.png" />
+    <Content Include="Images\Comment\Avatar.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -334,10 +383,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TagController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -378,6 +429,11 @@
     <Content Include="Content\style\type\fontello\fontello.ttf" />
     <Content Include="Content\style\type\fontello\fontello.woff" />
     <Content Include="Content\style\type\fontello\fontellod41d.eot" />
+    <Content Include="Content\Admin\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Admin\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\Admin\assets\global\plugins\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Admin\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\Admin\assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -386,12 +442,19 @@
     <Content Include="Views\Category\CategoryPartialView.cshtml" />
     <Content Include="Views\Tag\TagPartialView.cshtml" />
     <Content Include="Views\Shared\ArticlePartialView.cshtml" />
-    <Content Include="Views\Shared\AboutUsPartialView.cshtml" />
     <Content Include="Views\Shared\SearchBoxPartialView.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Tag\Index.cshtml" />
-    <Content Include="Views\Home\ArticleDetail.cshtml" />
+    <Content Include="Views\Article\ArticleDetail.cshtml" />
     <Content Include="Views\Shared\NavigationBarPartialView.cshtml" />
+    <Content Include="Views\Article\CommentPartialView.cshtml" />
+    <Content Include="Views\Shared\FooterPartialView.cshtml" />
+    <Content Include="Views\Home\ContactWe.cshtml" />
+    <Content Include="Views\Shared\AboutUsPartialView.cshtml" />
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Home\Ornek.cshtml" />
+    <Content Include="Views\Shared\Test.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -425,7 +488,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62674</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62674/</IISUrl>
+          <IISUrl>http://localhost:62677/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

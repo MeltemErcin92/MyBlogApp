@@ -1,0 +1,73 @@
+﻿<div class="divide100"></div>
+<div class="comment-form-wrapper" id="DoComment">
+    <h3>Yorum yazmak ister misin?</h3>
+    <p>Gösterilmesi zorunlu alanlar * ile gösterilmiştir</p>
+    <form class="comment-form" name="form_name" action="~/Article/Comment/" method="post">
+        <div class="name-field">
+            <label><i class="icon-user"></i></label>
+            <input type="text" name="NameSurname" placeholder="Ad*" id="NameSurname" />
+        </div>
+        <div class="email-field">
+            <label><i class="icon-mail-alt"></i></label>
+            <input type="text" name="Email" placeholder="E-Mail*" id="Email" />
+        </div>
+
+        <div class="message-field">
+            <textarea name="CommentContext" id="CommentContext" rows="5" cols="30" placeholder="Yorumunuzu giriniz...*"></textarea>
+        </div>
+        <input type="submit" value="Gönder" name="submit" class="btn btn-submit" disabled id="submitContent" />
+        <input type="hidden" value="@Model" name="ArticleId" />
+        <input type="text" value="" name="ConnectedCommentId" id="ConnectedCommentId" />
+
+    </form>
+</div>
+    <script>
+
+        var flagName = false;
+        var flagEmail = false;
+        var flagContent = false;
+        NameSurname.oninput = function () {
+            if (NameSurname.value == "") {
+                flagName = false;
+                document.getElementById("submitContent").disabled = true;
+            } else {
+                flagName = true;
+            }
+            callCheckFunction();
+        }
+        Email.oninput = function () {
+            if (Email.value == "") {
+                flagEmail = false;
+               
+                document.getElementById("submitContent").disabled = true;
+
+            } else {
+                flagEmail = true;
+            }
+            callCheckFunction();
+        }
+        CommentContext.oninput = function () {
+            if (CommentContext.value == "") {
+                flagContent = false;
+                
+                document.getElementById("submitContent").disabled = true;
+
+            } else {
+                flagContent = true;
+            }
+            callCheckFunction();
+        }
+
+        callCheckFunction = function () {
+            if (flagName == true && flagEmail == true && flagContent == true) {
+                // alert("Hepsi girildi")
+                document.getElementById("submitContent").disabled = false;
+            }
+        }
+        function get(id)
+        {
+            document.getElementById("ConnectedCommentId").value = id;
+        }
+
+    </script>
+

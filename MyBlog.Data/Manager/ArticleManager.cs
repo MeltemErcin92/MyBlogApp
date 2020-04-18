@@ -29,8 +29,24 @@ namespace MyBlog.Data.Manager
             return _Context.Articles.Where(_ => _.CategoryId == CatId).ToList();
         }
         public Article ArticleDetail(int id)
+
         {
             return _Context.Articles.SingleOrDefault(_ => _.ArticleId == id);
+        }
+        public int DoComment(Comment c)
+        {
+            c.CreationDate = GetNow;
+
+            _Context.Comments.Add(c);
+            return _Context.SaveChanges();
+        }
+        public List<Article> SearchArticle(string s)
+        {
+
+            return _Context.Articles.Where(_ => _.Header.Contains(s)).ToList();
+           
+
+
         }
     }
 }

@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "ArticleDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using MyBlog.Data.Model
+@model Article
+@helper ShowComments(int id)
+{
+
+<ul class="commentlist">
+
+    @foreach (Comment c in Model.Comments.Where(_ => _.ConnectedCommentId == id))
+    {
+
+    if (c != null)
+    {
+
+    <li style="list-style-type: none;">
+        <div class="comment-wrapper">
+            <div class="message">
+                <div class="arrow-box" style="margin-left:0px;">
+                    <div class="info">
+
+                        <h2><a href="#"> @c.NameSurname</a></h2>
+                        <br />
+                        <ul>
+                            @c.CommentContext
+                        </ul>
+                        <br />
+                        <div style="text-align:right">
+                            <span class="date">@c.CreationDate.ToShortDateString()</span>
+                            <span class="reply">
+                                <a class="reply-link" onclick="get(@c.CommentId)"
+                                   href="#DoComment">Cevapla</a>
+                            </span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </li>
+    @ShowComments(c.CommentId)
+    }
+
+    }
+</ul>
+}
+
+<div class="col-sm-8 content">
+    <div class="blog-posts classic-blog single">
+        <div class="post format-image">
+            <div class="meta">
+                <span class="date">@Model.CreateDate.ToShortDateString()</span><span class="categories">
+
+                    <a href="/Category/Index/@Model.Category.CategoryId">@Model.Category.CategoryName</a>
+                </span>
+                <span class="comments">
+                    <a href="#comments">@Model.Comments.Count <i class="icon-chat-1"></i></a>
+                </span>
+            </div>
+            <h1 class="post-title">@Model.Header</h1>
+            <figure class="main">
+                <img src="@Model.Image.LargeSize" alt="" />
+            </figure>
+            <div class="post-content">
+
+                @Model.Content
+
+            </div>
+        </div>
+        <!-- /.post -->
+
+    </div>
+    <!-- /.blog-posts -->
+    <div class="about-author dark-wrapper">
+        <div class="author-image"> <img alt="" src="style/images/art/author.jpg" /> </div>
+        <div class="author-details">
+            <h3>Yazar Hakkında</h3>
+            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum.</p>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="divide100"></div>
+    <div id="comments">
+        @if (Model.Comments.Count > 0)
+        {
+            <h3>@Model.Comments.Count Yorum</h3>
+        }
+        else
+        {
+            <p>Henüz yorum yapılmadı</p>
+        }
+        @ShowComments(0)
+    </div>
+
+    <!-- /#comments -->
+    @Html.Partial("~/Views/Article/CommentPartialView.cshtml", Model.ArticleId)
+    <!-- /.comment-form-wrapper -->
+
+</div>

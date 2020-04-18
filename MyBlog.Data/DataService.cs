@@ -57,11 +57,22 @@ namespace MyBlog.Data
                     _TagManager = new TagManager(_Context);
                 return _TagManager;
             }
+
+        }
+        private GeneralManager _GeneralManager;
+
+        public GeneralManager GeneralManager
+        {
+            get {
+                if (_GeneralManager == null)
+                    _GeneralManager = new GeneralManager(_Context);
+                return _GeneralManager;
+            }
            
         }
 
 
 
-
     }
+    
 }

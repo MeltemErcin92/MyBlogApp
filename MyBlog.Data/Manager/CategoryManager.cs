@@ -14,7 +14,7 @@ namespace MyBlog.Data.Manager
         }
         public List<Category> GetAllCategories()
         {
-            return _Context.Categories.ToList();
+            return _Context.Categories.OrderBy(_ => _.CategoryName).ToList();
         }
     }
 }

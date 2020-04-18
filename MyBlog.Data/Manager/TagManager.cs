@@ -14,8 +14,9 @@ namespace MyBlog.Data.Manager
         }
         public List<Tag> GetAllTags()
         {
-            string sqlQuery = "select * from Tag";
-            return _Context.Database.SqlQuery<Tag>(sqlQuery).ToList();
+            //string sqlQuery = "select * from Tag";
+            //return _Context.Database.SqlQuery<Tag>(sqlQuery).ToList();
+            return _Context.Tags.ToList();
         }
         public List<Article> GetArticlesWithTags(int tagId)
         {

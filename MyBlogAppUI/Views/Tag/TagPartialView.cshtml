@@ -5,7 +5,10 @@
     <ul class="tag-list">
         @foreach (Tag t in Model)
         {
-            <li><a href="/Tag/Index/@t.TagId">@t.TagName</a></li>
+            if (t.Articles.Count>0)
+            {
+                <li><a href="/Tag/Index/@t.TagId">@t.TagName</a></li>
+            }
         }
 
 

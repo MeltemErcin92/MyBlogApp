@@ -6,7 +6,7 @@
         <ul class="circled">
             @foreach (Category c in Model)
             {
-                <li>
+                <li >
                     <a href="/Category/Index/@c.CategoryId">
                         @c.CategoryName (@c.Articles.Count)
                     </a>

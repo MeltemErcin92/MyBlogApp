@@ -14,5 +14,11 @@ namespace MyBlog.Data.Manager
         {
             _Context = ctx ?? new BlogDbContext(DataService.connectionString);
         }
+        public DateTime GetNow {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
     }
 }

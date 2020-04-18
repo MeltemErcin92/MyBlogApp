@@ -7,7 +7,7 @@
         @foreach (Article article in Model)
         {
             <li>
-                <div class="icon-overlay"> <a href="/Home/ArticleDetail/@article.ArticleId">
+                <div class="icon-overlay"> <a href="/Article/ArticleDetail/@article.ArticleId">
     @if (article.Image != null)
     {
         <img src="@article.Image.SmallSize" alt="" />
@@ -15,7 +15,7 @@
 </a>
                 </div>
                 <div class="meta">
-                    <h5><a href="/Home/ArticleDetail/@article.ArticleId">@article.Header</a></h5>
+                    <h5><a href="/Article/ArticleDetail/@article.ArticleId">@article.Header</a></h5>
                     <em>
                         @article.CreateDate <span class="comments">
                         <a href="#">

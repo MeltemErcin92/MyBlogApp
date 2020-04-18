@@ -1,4 +1,5 @@
 ﻿
+
 using MyBlog.Data.Model;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,15 @@ namespace MyBlogAppUI.Controllers
         {
             var data = Service.ArticleManager.GetArticles().ToList();
 
+
             return View(data);
+        }
+         public ActionResult Ornek()
+        {
+           
+
+
+            return View();
         }
         public PartialViewResult PopularArticles()
         {
@@ -24,11 +33,34 @@ namespace MyBlogAppUI.Controllers
             return PartialView("PopularArticles", data);
         }
        
-        public ActionResult ArticleDetail(int id)
+     public ActionResult ContactWe()
         {
-            var article = Service.ArticleManager.ArticleDetail(id);
-            return View(article);
-
+            return View("ContactWe");
         }
+        [HttpPost]
+        public ActionResult SendMessage(Message msj)
+        {
+            if(msj.MessageSubject!=null && msj.Email != null)
+            {
+                Service.GeneralManager.Sendmessage(msj);
+               
+            }
+           
+
+            return RedirectToAction("ContactWe");
+        }
+        [HttpGet]
+        public ActionResult SearchArticle()
+        {
+
+          return RedirectToAction("SearchArticle");
+        }
+        [HttpPost]
+        public ActionResult SearchArticle(string s)
+        {
+            var data = Service.ArticleManager.SearchArticle(s);
+            return PartialView("ArticlePartialView", data);
+        }
+
     }
 }

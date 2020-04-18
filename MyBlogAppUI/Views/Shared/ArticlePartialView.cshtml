@@ -7,7 +7,7 @@
         <div class="post row">
             <div class="col-sm-4">
                 <figure>
-                    <a href="/Home/ArticleDetail/@a.ArticleId">
+                    <a href="/Article/ArticleDetail/@a.ArticleId">
                         <div class="text-overlay">
                             <div class="info"><span>Daha Fazla</span></div>
                         </div>
@@ -19,8 +19,10 @@
                 </figure>
             </div>
             <div class="col-sm-8 post-content">
-                <div class="meta"><span class="date">@a.CreateDate.ToShortDateString()</span><span class="comments"><a href="#">@a.Comments.Count <i class="icon-chat-1"></i></a></span></div>
-                <h2 class="post-title"><a href="/Home/ArticleDetail/@a.ArticleId">@a.Header</a></h2>
+                <div class="meta">
+                <span>@a.Category.CategoryName</span>
+                <span class="date">@a.CreateDate.ToShortTimeString()</span><span class="comments"><a href="#">@a.Comments.Count <i class="icon-chat-1"></i></a></span></div>
+                <h2 class="post-title"><a href="/Article/ArticleDetail/@a.ArticleId">@a.Header</a></h2>
                 <p>@MyBlogAppUI.Helpers.Helper.ShortenContent(a.Content)</p>
             </div>
         </div>
@@ -28,3 +30,4 @@
 
 
 </div>
+

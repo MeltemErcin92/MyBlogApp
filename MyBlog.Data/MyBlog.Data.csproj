@@ -56,8 +56,10 @@
     <Compile Include="Manager\ArticleManager.cs" />
     <Compile Include="Manager\BaseManager.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
+    <Compile Include="Manager\GeneralManager.cs" />
     <Compile Include="Manager\TagManager.cs" />
     <Compile Include="Model\Article.cs" />
+    <Compile Include="Model\Message.cs" />
     <Compile Include="Properties\BlogDbContext.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Comment.cs" />
@@ -73,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="efpt.config.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

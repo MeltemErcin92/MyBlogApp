@@ -11,10 +11,10 @@ namespace MyBlog.Data.Model
     {
         public int CommentId { get; set; }
 
-        [Column("Comment")]
+        [Column("CommentContext")]
         [Required]
         [StringLength(1500)]
-        public string Comment1 { get; set; }
+        public string CommentContext { get; set; }
 
         public DateTime CreationDate { get; set; }
 
@@ -23,9 +23,13 @@ namespace MyBlog.Data.Model
         public string NameSurname { get; set; }
 
         public int LikeCount { get; set; }
+        [StringLength(100)]
+        [Required]
+        public string Email { get; set; }
 
         public int ArticleId { get; set; }
 
         public virtual Article Article { get; set; }
+        public int ConnectedCommentId { get; set; }
     }
 }

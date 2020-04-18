@@ -1,9 +1,13 @@
 ﻿
-<div class="sidebox widget">
-    <h3 class="widget-title section-title">Arama</h3>
-    <form class="searchform" method="get">
-        <label><i class="icon-search"></i></label>
-        <input type="text" id="s2" name="s" value="" onfocus="this.value='Aramak istediğiniz kelimeyi giriniz'" onblur="this.value='Search something'" />
-        <button type="submit" class="btn">Ara</button>
-    </form>
-</div>
+@using (Html.BeginForm("SearchArticle", "Home", FormMethod.Post))
+{
+    <div class="sidebox widget">
+        <h3 class="widget-title section-title">ARAMA</h3>
+        <form class="searchform" method="get">
+            <label><i class="icon-search"></i></label>
+            <input type="text" id="s2" name="s"  />
+            <button type="submit" class="btn">Ara</button>
+        </form>
+    </div>
+}
+
