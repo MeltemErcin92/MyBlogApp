@@ -20,11 +20,8 @@ namespace MyBlogAppUI.Controllers
 
             return View(data);
         }
-         public ActionResult Ornek()
+         public ActionResult Admin()
         {
-           
-
-
             return View();
         }
         public PartialViewResult PopularArticles()

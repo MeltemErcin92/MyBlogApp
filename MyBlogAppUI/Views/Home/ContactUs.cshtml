@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+}
+
+
+
+
+<h3 style="text-align:center">İletişim Formu </h3>
+<p class="text-center">
+
+    Benim ile İlitişim kurmak için aşağıdaki formu doldurup gönderebilirsiniz.
+</p>
+
+@if (ViewBag.Message != null)
+{
+    <span class="d-block p-2 bg-primary text-white">@ViewBag.Message </span>
+}
+
+<div class="divide20"></div>
+<div class="form-container">
+    <div class="response alert alert-success"></div>
+    <form class="forms" action="/Home/SendMessage" method="post">
+        <fieldset>
+            <ol class="row">
+                <li class="form-row text-input-row name-field col-sm-6">
+                    <label><i class="icon-user"></i></label>
+                    <input type="text" name="Name" class="text-input defaultText required" title="Ad (Zorunlu)" />
+                </li>
+                <li class="form-row text-input-row email-field col-sm-6">
+                    <label><i class="icon-mail-alt"></i></label>
+                    <input type="text" name="Email" class="text-input defaultText required email" title="Mail Adresi (Zorunlu)" />
+                </li>
+
+                <li class="form-row text-input-row subject-field col-sm-12">
+                    <label><i class="icon-doc-text-inv"></i></label>
+                    <input type="text" name="Subject" class="text-input defaultText" title="Konu" />
+                </li>
+                <li class="form-row text-area-row col-sm-12">
+                    <textarea name="Content" class="text-area required" placeholder="Describe yourself here...">
+                  
+                     </textarea>
+
+                    @*<input type="text" name="Content" class="text-input defaultText" placeholder="Describe yourself here..." />*@
+
+                </li>
+                @*<li class="form-row hidden-row">
+                        <input type="hidden" name="hidden" value="" />
+                    </li>*@
+                @*<li class="nocomment">
+                    <label>Leave This Field Empty</label>
+                    <input id="nocomment" value="" name="nocomment" />
+                </li>*@
+                <li class="button-row col-sm-12">
+                    <input type="submit" value="Submit" name="submit" class="btn btn-submit bm0" />
+                </li>
+            </ol>
+            <input type="hidden" name="v_error" id="v-error" value="Required" />
+            <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
+        </fieldset>
+    </form>
+</div>
+
+
+
+@section scriptSection {
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+}

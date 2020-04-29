@@ -1,0 +1,21 @@
+﻿
+
+@using MyBlogApp.Data.Model
+@model List<Category>
+
+<div class="sidebox widget" >
+    <h4 class="widget-title">KATEGORİLER</h4>
+    <ul class="circled">
+        @foreach (Category c in Model)
+        {
+        <li >
+         
+            <a href="/Category/Index/@c.CategoryId">
+                @c.Name (@c.Articles.Count)
+            </a>
+
+        </li>
+
+        }
+    </ul>
+</div>

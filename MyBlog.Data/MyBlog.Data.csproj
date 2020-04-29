@@ -52,12 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppClass\LoginResult.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="Manager\ArticleManager.cs" />
     <Compile Include="Manager\BaseManager.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\GeneralManager.cs" />
     <Compile Include="Manager\TagManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Model\Article.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Properties\BlogDbContext.cs" />

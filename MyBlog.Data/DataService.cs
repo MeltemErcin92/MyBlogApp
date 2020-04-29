@@ -70,6 +70,19 @@ namespace MyBlog.Data
             }
            
         }
+        private UserManager _UserManager;
+
+        public UserManager UserManager
+        {
+            get {
+                if (_UserManager == null)
+                    _UserManager = new UserManager(_Context);
+                return _UserManager;
+
+            }
+           
+        }
+
 
 
 

@@ -35,5 +35,6 @@ namespace MyBlog.Data.Manager
             //sql sorgusu iler çağır
           return  _Context.Articles.Where(_ => _.Tags.Any(t => t.TagId == tagId)).ToList();
         }
+        
     }
 }

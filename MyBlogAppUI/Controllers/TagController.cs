@@ -24,5 +24,10 @@ namespace MyBlogAppUI.Controllers
             var data = Service.TagManager.GetArticlesWithTags(id);
             return PartialView("ArticlePartialView", data);
         }
+        public ActionResult Tags()
+        {
+            var tags = Service.TagManager.GetAllTags();
+            return View(tags);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace MyBlog.Data.Model
 
         [Required]
         [StringLength(50)]
-        public string UserName { get; set; }
+        public string username { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -31,7 +31,7 @@ namespace MyBlog.Data.Model
 
         [Required]
         [StringLength(50)]
-        public string Password { get; set; }
+        public string password { get; set; }
 
         [Required]
         [StringLength(50)]
