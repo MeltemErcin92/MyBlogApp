@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using MyBlog.Data.Model
+@model List<Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="alert">
+    @if (TempData["Message"] != null)
+    {
+        <h3> @TempData["Message"]</h3>
+    }
+</div>
+<div id="CategoryInsertPopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("CategoryInsertPartialView")
+</div>
+<div id="CategoryDeletePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("CategoryDeletePartialView")
+</div>
+<div id="CategoryUpdatePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("CategoryUpdatePartialView")
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase">Kategori Listesi</span>
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="sample_editable_1_new" class="btn sbold green" data-toggle="modal" href="#CategoryInsertPopUp">
+
+                                    Kategori Ekle
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="CategoryTbl">
+                    <thead>
+                        <tr>
+                            <th>Sıralama</th>
+                            <th>Kategori İsmi </th>
+                            <th>Oluşturulma Tarihi </th>
+                            <th> Açıklama </th>
+                            <th> Sisteme Ekleyen </th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 0;
+                        }
+
+                        @foreach (Category ct in Model)
+                        {
+                        <tr class="odd gradeX">
+                            <td>
+
+                                @(++i)
+                            </td>
+                            <td>
+                                @ct.CategoryName
+                            </td>
+
+                            <td>
+                                @ct.CreateDate
+                            </td>
+
+                            <td>
+                                @ct.Explation
+                            </td>
+                            <td class="center">10</td>
+                            @*<td>
+        <div class="btn-group">
+            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-docs" data-toggle="modal" href="#TagInsertPopUp"></i>
+                        Yeni Tag
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-tag"></i> Tag Düzenle
+                    </a>
+                </li>
+                @*<li class="divider"> </li>*@
+                            @*<li>
+                        <a href="javascript:;">
+                            <i class="icon-user"></i> Tag Sil
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </td>*@
+                            <td class="col-md-2">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        İşlemler
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-left" role="menu">
+                                        <li>
+                                            <a data-toggle="modal"
+                                               href="#CategoryInsertPopUp"
+                                               data-id="@ct.CategoryId"
+                                               data-Name="@ct.CategoryName">
+                                                <i class="icon-docs"></i> Yeni Kategori
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="CategoryUpdate" data-toggle="modal"
+                                               data-target="#CategoryUpdatePopUp"
+                                               data-id="@ct.CategoryId" data-Name="@ct.CategoryName"
+                                               data-Explanation="@ct.Explation">
+                                                <i class="icon-tag"></i>  Kategori Düzenle
+                                            </a>
+                                        </li>
+                                        <li class="divider"> </li>
+                                        <li>
+                                            <a class="CategoryDelete"
+                                               data-toggle="modal"
+                                               data-target="#CategoryDeletePopUp"
+                                               data-id="@ct.CategoryId" data-Name="@ct.CategoryName">
+                                                <i class="icon-user"></i> Kategori Sil
+                                            </a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+
+<script src="~/Content/Admin/assets/global/plugins/jquery.min.js"></script>
+@section script{
+
+    <script type="text/javascript">
+        $(".CategoryDelete").click(function () {
+                var id = $(this).attr('data-id');
+                var CatName = $(this).attr('data-Name');
+            var CatName = $(this).attr('data-Name');
+            document.getElementById("CategoryDeletePopupSpan").innerHTML = CatName;
+            $("#CategoryDeletePopUp").attr("data-id", id);
+            $("#CategoryDeletePopUps").val(id);
+        })
+        $(".CategoryUpdate").click(function () {
+            var id = $(this).attr('data-id');
+            var cName = $(this).attr('data-Name');
+            var explation = $(this).attr('data-Explanation');
+            $("#CategoryUpdatePopUp").attr("data-id", id);
+            $("#CategoryNameId").val(cName);
+            $("#categoryIdUpdateId").val(id);
+            $("#ExplationId").val(explation);
+        })
+
+    </script>
+}
+

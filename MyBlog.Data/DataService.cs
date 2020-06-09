@@ -82,6 +82,41 @@ namespace MyBlog.Data
             }
            
         }
+        private CommentManager _CommentManager;
+
+        public CommentManager CommentManager
+        {
+            get {
+                if (_CommentManager == null)
+                    _CommentManager = new CommentManager(_Context);
+                return _CommentManager;
+            }
+           
+        }
+        private RoleManager _RoleManager;
+
+        public RoleManager RoleManager
+        {
+            get {
+                if (_RoleManager == null)
+                    _RoleManager = new RoleManager(_Context);
+                return _RoleManager;
+            }
+           
+        }
+
+        private UserRoleManager _UserRoleManager;
+
+        public UserRoleManager UserRoleManager
+        {
+            get {
+                if (_UserRoleManager == null)
+                    _UserRoleManager = new UserRoleManager(_Context);
+                return _UserRoleManager;
+            }
+         
+        }
+
 
 
 

@@ -1,0 +1,22 @@
+﻿@using MyBlog.Data.Model
+@using MyBlogAppUI.Controllers
+@{
+    var roles = RoleController.Service.RoleManager.getRoles();
+}
+
+
+
+<div class="form-group">
+    <label class="col-md-3 control-label">Role Adı </label>
+    <div class="col-md-9">
+        <select name="RoleId" class="form-control">
+            @foreach (Role r in roles)
+            {
+                <option value="@r.RoleId">
+                    @r.RoleName
+                </option>
+            }
+        </select>
+    </div>
+</div>
+

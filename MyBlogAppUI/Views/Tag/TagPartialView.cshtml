@@ -1,14 +1,19 @@
 ﻿@using MyBlog.Data.Model
 @model List<Tag>
+<div>
+    <h3>
+        @ViewBag.Message
+    </h3>
+</div>
 <div class="sidebox widget">
     <h3 class="widget-title section-title">ETIKET BULUTU</h3>
     <ul class="tag-list">
         @foreach (Tag t in Model)
         {
-            if (t.Articles.Count>0)
-            {
+         //   if (t.Articles.Count>0)
+          //  {
                 <li><a href="/Tag/Index/@t.TagId">@t.TagName</a></li>
-            }
+          //  }
         }
 
 

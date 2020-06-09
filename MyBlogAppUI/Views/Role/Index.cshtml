@@ -1,0 +1,146 @@
+﻿@using MyBlog.Data.Model
+@model List<Role>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="alert">
+    @if (TempData["Message"] != null)
+    {
+        <h3> @TempData["Message"]</h3>
+    }
+</div>
+<div id="RoleInsertPopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("RoleInsertPartialView")
+
+
+</div>
+<div id="RoleDeletePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("RoleDeletePartialView")
+</div>
+<div id="RoleUpdatePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("RoleUpdatePartialView")
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase">Rol Listesi</span>
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="sample_editable_1_new" class="btn sbold green" data-toggle="modal" href="#RoleInsertPopUp">
+
+                                    Rol Ekle
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="RoleTbl">
+                    <thead>
+                        <tr>
+                            <th>Sıralama</th>
+                            <th>Rol Adı </th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 0;
+                        }
+
+                        @foreach (Role r in Model)
+                        {
+                            <tr class="odd gradeX">
+                                <td>
+
+                                    @(++i)
+                                </td>
+                                <td>
+                                    @r.RoleName
+                                </td>
+                                <td class="col-md-2">
+                                    <div class="btn-group">
+                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown"
+                                                aria-expanded="false">
+                                            İşlemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu pull-left" role="menu">
+                                            <li>
+                                                <a data-toggle="modal"
+                                                   href="#RoleInsertPopUp"
+                                                   data-Insertid="@r.RoleId"
+                                                   data-InsertAd="@r.RoleName">
+                                                    >
+                                                    <i class="icon-docs"></i> Rol Ekle
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="RoleUpdate" data-toggle="modal"
+                                                   href="#RoleUpdatePopUp"
+                                                   data-roleId="@r.RoleId"
+                                                   data-roleName="@r.RoleName">
+                                                    <i class="icon-tag"></i>Rol Düzenle
+                                                </a>
+                                            </li>
+                                           
+                                            <li>
+
+                                                <a class="RoleDelete"
+                                                   data-toggle="modal"
+                                                   data-target="#RoleDeletePopUp"
+                                                   data-id="@r.RoleId" data-Name="@r.RoleName">
+                                                    <i class="icon-user"></i> Rol Sil
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+
+<script src="~/Content/Admin/assets/global/plugins/jquery.min.js"></script>
+@section script{
+
+    <script type="text/javascript">
+
+        $(".RoleUpdate").click(function () {
+            var roleId = $(this).attr(' data-roleId');
+            var roleName = $(this).attr('data-roleName');
+            $("#updateRoleId").val(roleId);
+            $("#updateRoleName").val(roleName);
+        })
+        $(".RoleDelete").click(function () {
+            var id = $(this).attr('data-id');
+            var roleName = $(this).attr('data-Name');
+            document.getElementById("RoleDeletePopupSpan").innerHTML = roleName ;
+            $("#RoleDeletePopups").val(id);
+        })
+    </script>
+}

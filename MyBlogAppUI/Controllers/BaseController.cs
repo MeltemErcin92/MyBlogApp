@@ -43,6 +43,8 @@ namespace MyBlogAppUI.Controllers
         public BaseController()
         {
             Authentication();
+            ViewBag.userName = username;
+            ViewBag.userID = UserId;
         }
         //Cookiyi buradan okuyoruz
         private void Authentication()
@@ -54,7 +56,9 @@ namespace MyBlogAppUI.Controllers
                 {
                     FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
                     username = ticket.Name;
-                    UserId = Convert.ToInt32(ticket.UserData);
+                   
+                    String[] introduction = (ticket.UserData).Split(':');
+                    UserId =Convert.ToInt32(introduction[0]);
 
                 }
             }

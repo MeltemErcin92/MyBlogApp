@@ -1,0 +1,71 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Kategori düzenleme</h4>
+        </div>
+        <form action="/Category/CategoryUpdate/" method="post" class="form-horizontal" role="form">
+            <div class="modal-body">
+                <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="form-body">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Kategori Adı</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control spinner" id="CategoryNameId" name="CategoryName" >
+
+                                        <input type="hidden" name="CategoryId" id="categoryIdUpdateId" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Kategori Açıklaması</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control spinner" id="ExplationId" name="Explation" >
+                                    </div>
+                                </div>
+                               
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Vazgeç</button>
+                <button type="submit" class="btn green"  onclick="control()" id="checkFormUpdate">Güncelle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Content/Admin/assets/global/plugins/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#CategoryName").on('input', function () {
+            if ($("#CategoryName").val() != "") {
+                document.getElementById("checkFormUpdate").disabled = false;
+            } else {
+                document.getElementById("checkFormUpdate").disabled = true;
+            }
+        })
+        function control()
+        {
+            var value = $("#CategoryName").val();
+            if (value == undefined || value == "") {
+                alert("Kategori Adı boş geçilemez");
+            }
+        }
+    })
+
+</script>
+
+
+

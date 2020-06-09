@@ -11,7 +11,6 @@ namespace MyBlog.Data.Model
     {
         public int CommentId { get; set; }
 
-        [Column("CommentContext")]
         [Required]
         [StringLength(1500)]
         public string CommentContext { get; set; }
@@ -23,13 +22,17 @@ namespace MyBlog.Data.Model
         public string NameSurname { get; set; }
 
         public int LikeCount { get; set; }
-        [StringLength(100)]
-        [Required]
-        public string Email { get; set; }
 
         public int ArticleId { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        public string Email { get; set; }
+
+        public int? ConnectedCommentId { get; set; }
+
+        public bool? isActive { get; set; }
+
         public virtual Article Article { get; set; }
-        public int ConnectedCommentId { get; set; }
     }
 }

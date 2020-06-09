@@ -41,7 +41,7 @@ namespace MyBlog.Data.Model
 
         public DateTime? BirthDate { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
 
         public bool? IsAuthor { get; set; }
 
@@ -49,9 +49,11 @@ namespace MyBlog.Data.Model
 
         public bool? Active { get; set; }
 
-        public int? ImageId { get; set; }
+        [Required]
+        [StringLength(2000)]
+        public string imagePath { get; set; }
 
-        public virtual Image Image { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role> Roles { get; set; }

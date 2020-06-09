@@ -4,22 +4,56 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
             <h4 class="modal-title">Tag ekleme</h4>
         </div>
-        <div class="modal-body">
-            <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
-                <div class="row">
-                    <div class="col-md-6">
+        <form action="/Tag/InsertTag" method="post" class="form-horizontal" role="form">
+            <div class="modal-body">
+                <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                    <div class="row">
+                        <div class="col-md-6">
 
-                    </div>
-                    <div class="col-md-6">
+                        </div>
+                        <div class="col-md-12">
 
+                            <div class="form-body">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Tag Adı</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control spinner" id="TagName" name="TagName" placeholder="Tag Adını Giriniz">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn dark btn-outline">Close</button>
-            <button type="button" class="btn green">Save changes</button>
-        </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
+                <button type="submit" disabled class="btn green"onclick="control()" id="checkForm">Kaydet</button>
+            </div>
+        </form>
     </div>
 </div>
+<script src="~/Content/Admin/assets/global/plugins/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#TagName").on('input', function () {
+            if ($("#TagName").val() != "") {
+                document.getElementById("checkForm").disabled = false;
+            } else {
+                document.getElementById("checkForm").disabled = true;
+            }
+        })
+        function control()
+        {
+            var value = $("#TagName").val();
+            if (value == undefined || value == "") {
+                alert("Tag Adı boş geçilemez");
+            }
+        }
+    })
+        
+</script>
 

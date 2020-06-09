@@ -1,0 +1,35 @@
+﻿
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Kullanıcı Silme</h4>
+        </div>
+        <form action="/User/UserDelete/" method="post" class="form-horizontal" role="form">
+            <div class="form-body">
+                <div class="modal-body">
+
+
+                    <div class="scroller" style="height:45px" data-always-visible="1" data-rail-visible1="1"
+                         data-id="">
+                        Seçtiğiniz
+                        <span id="UserDeletePopupSpan">
+
+                        </span>
+
+                        kullanıcı sistemden silinecektir
+
+                        <input type="hidden" name="id" id="UserDeletePopups" value="" />
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
+                <button type="submit" class="btn green" id="deleteCheckForm">Devam</button>
+            </div>
+
+        </form>
+    </div>
+</div>

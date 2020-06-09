@@ -44,6 +44,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,24 +54,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppClass\CategoryResult.cs" />
+    <Compile Include="AppClass\CustomRoleProvider.cs" />
     <Compile Include="AppClass\LoginResult.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="Manager\ArticleManager.cs" />
     <Compile Include="Manager\BaseManager.cs" />
     <Compile Include="Manager\CategoryManager.cs" />
+    <Compile Include="Manager\CommentManager.cs" />
     <Compile Include="Manager\GeneralManager.cs" />
     <Compile Include="Manager\TagManager.cs" />
+    <Compile Include="Manager\RoleManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Manager\UserRoleManager.cs" />
     <Compile Include="Model\Article.cs" />
-    <Compile Include="Model\Message.cs" />
-    <Compile Include="Properties\BlogDbContext.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\Image.cs" />
+    <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="BlogDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,8 +84,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CodeTemplates\CSharpDbContext\DbContext.hbs" />
+    <None Include="CodeTemplates\CSharpDbContext\Partials\DbConstructor.hbs" />
+    <None Include="CodeTemplates\CSharpDbContext\Partials\DbImports.hbs" />
+    <None Include="CodeTemplates\CSharpDbContext\Partials\DbSets.hbs" />
+    <None Include="CodeTemplates\CSharpEntityType\Class.hbs" />
+    <None Include="CodeTemplates\CSharpEntityType\Partials\Constructor.hbs" />
+    <None Include="CodeTemplates\CSharpEntityType\Partials\Imports.hbs" />
+    <None Include="CodeTemplates\CSharpEntityType\Partials\Properties.hbs" />
+    <None Include="CodeTemplates\TypeScriptDbContext\DbContext.hbs" />
+    <None Include="CodeTemplates\TypeScriptDbContext\Partials\DbConstructor.hbs" />
+    <None Include="CodeTemplates\TypeScriptDbContext\Partials\DbImports.hbs" />
+    <None Include="CodeTemplates\TypeScriptDbContext\Partials\DbSets.hbs" />
+    <None Include="CodeTemplates\TypeScriptEntityType\Class.hbs" />
+    <None Include="CodeTemplates\TypeScriptEntityType\Partials\Constructor.hbs" />
+    <None Include="CodeTemplates\TypeScriptEntityType\Partials\Imports.hbs" />
+    <None Include="CodeTemplates\TypeScriptEntityType\Partials\Properties.hbs" />
     <None Include="efpt.config.json" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

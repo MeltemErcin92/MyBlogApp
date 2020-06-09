@@ -1,0 +1,245 @@
+﻿@using MyBlog.Data.Model
+@model User
+  
+
+@{
+    ViewBag.Title = "UserEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-paper-plane font-yellow-casablanca"></i>
+                    <span class="caption-helper">Kullanıcı Düzenleme</span>
+                </div>
+                <div class="inputs">
+
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form action="/User/UpdateUser/" method="post" class="form-horizontal" role="form">
+                    <div class="form-body">
+
+                        <div class="scroller" style="min-height:340px" data-always-visible="1" data-rail-visible1="1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Adı</label>
+                                        <div class="col-md-9" id="nameDiv">
+                                            <input type="text" class="form-control spinner" name="Name" id="name_" required
+                                                   value="@Model.Name"
+                                                   placeholder="Ad giriniz">
+
+                                            <input type="hidden" name="UserId" value="@Model.UserId" id="UserIdUpdate" />
+                                            <span class="help-block" id="nameError" style="display:none">
+                                                Adı alanı boş geçilemez
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Soyadı</label>
+                                        <div class="col-md-9" id="surNameDiv_">
+                                            <input type="text" class="form-control spinner" required
+                                                   name="Surname" id="surName_" value="@Model.Surname"
+                                                   placeholder="Soyad giriniz">
+                                            <span class="help-block" id="surNameError_" style="display:none">Soyadı alanı boş geçilemez</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Kullanıcı Adı</label>
+                                        <div class="col-md-9" id="userNameDiv_">
+                                            <input type="text" class="form-control spinner" required
+                                                   name="username" id="userName_" value="@Model.username"
+                                                   placeholder="Kullanıcı adını giriniz">
+                                            <span class="help-block" id="userNameError_" style="display:none">Kullanıcı adı boş geçilemez</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Şifre</label>
+                                        <div class="col-md-9" id="passwordDiv_">
+                                            <input type="text" class="form-control spinner" required
+                                                   name="password" value="@Model.password"
+                                                   id="password_"
+                                                   placeholder="Şifre giriniz">
+                                            <span class="help-block" id="passwordError" style="display:none">Şifre boş geçilemez</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Email </label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control spinner"
+                                                   name="EmailAdress" id="emailAddress_" value="@Model.EmailAdress"
+                                                   placeholder="Email giriniz">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Cinsiyet</label>
+
+
+                                        @if (Model.Gender == true)
+                                        {
+                                            <label class="col-md-1 control-label">Bay</label>
+                                            <div class="col-md-3">
+                                                <input type="radio" class="form-control spinner" checked
+                                                       name="Gender" id="genderBay_" value="true">
+                                            </div>
+
+                                            <label class="col-md-1 control-label">Bayan</label>
+                                            <div class="col-md-3">
+                                                <input type="radio" class="form-control spinner" value="false"
+                                                       name="Gender" id="genderBayan_">
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+
+                                            <label class="col-md-1 control-label">Erkek</label>
+                                            <div class="col-md-3">
+                                                <input type="radio" class="form-control spinner"
+                                                       name="Gender" id="genderBay_" value="false">
+                                            </div>
+
+                                            <label class="col-md-1 control-label">Kadın</label>
+                                            <div class="col-md-3">
+                                                <input type="radio" class="form-control spinner" value="true" checked
+                                                       name="Gender" id="genderBayan_">
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
+                            <button type="submit" class="btn green" onclick="checkValidation()">Kaydet</button>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+</div>
+
+
+
+
+
+<script src="~/Content/Admin/global/plugins/jquery.min.js"></script>
+<script>
+
+
+    function checkValidation() {
+
+        if ($("#name_").val() == "") {
+            $("#nameDiv_").attr('class', 'col-md-9 has-error');
+            $("#nameError_").css('display', 'block');
+        }
+
+
+        if ($("#surName_").val() == "") {
+            $("#surNameDiv_").attr('class', 'col-md-9 has-error');
+            $("#surNameError_").css('display', 'block');
+        }
+
+
+        if ($("#userName_").val() == "") {
+            $("#userNameDiv_").attr('class', 'col-md-9 has-error');
+            $("#userNameError_").css('display', 'block');
+        }
+
+
+        if ($("#password_").val() == "") {
+            $("#passwordDiv_").attr('class', 'col-md-9 has-error');
+            $("#passwordError_").css('display', 'block');
+        }
+
+    }
+
+
+
+    $(document).ready(function () {
+
+        $("#name_").on('input', function () {
+            if ($("#name_").val() != "") {
+                $("#nameDiv_").attr('class', 'col-md-9');
+                $("#nameError_").css('display', 'none');
+            }
+            else {
+                $("#nameDiv_").attr('class', 'col-md-9 has-error');
+                $("#nameError_").css('display', 'block');
+            }
+        })
+
+
+        $("#surName_").on('input', function () {
+            if ($("#surName_").val() != "") {
+                $("#surNameDiv_").attr('class', 'col-md-9');
+                $("#surNameError_").css('display', 'none');
+            }
+            else {
+                $("#surNameDiv_").attr('class', 'col-md-9 has-error');
+                $("#surNameError_").css('display', 'block');
+            }
+        })
+
+
+        $("#userName_").on('input', function () {
+            if ($("#userName_").val() != "") {
+                $("#userNameDiv_").attr('class', 'col-md-9');
+                $("#userNameError_").css('display', 'none');
+            }
+            else {
+                $("#userNameDiv_").attr('class', 'col-md-9 has-error');
+                $("#userNameError_").css('display', 'block');
+            }
+        })
+
+
+
+        $("#password_").on('input', function () {
+            if ($("#password_").val() != "") {
+                $("#passwordDiv_").attr('class', 'col-md-9');
+                $("#passwordError_").css('display', 'none');
+            }
+            else {
+                $("#passwordDiv_").attr('class', 'col-md-9 has-error');
+                $("#passwordError_").css('display', 'block');
+            }
+        })
+
+    })
+
+</script>
+

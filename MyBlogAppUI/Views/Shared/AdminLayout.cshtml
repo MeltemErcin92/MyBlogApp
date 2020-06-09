@@ -30,6 +30,7 @@
     <link href="~/Content/Admin/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
+   
 </head>
 <!-- END HEAD -->
 <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
@@ -53,14 +54,14 @@
             <!-- BEGIN PAGE ACTIONS -->
             <!-- DOC: Remove "hide" class to enable the page header actions -->
             @*<div class="page-actions">
-               
-            </div>*@
+
+                </div>*@
+
             <!-- END PAGE ACTIONS -->
             <!-- BEGIN PAGE TOP -->
             <div class="page-top">
                 <!-- BEGIN HEADER SEARCH BOX -->
                 <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-             
                 <!-- END HEADER SEARCH BOX -->
                 <!-- BEGIN TOP NAVIGATION MENU -->
                 <div class="top-menu">
@@ -70,36 +71,34 @@
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <!-- DOC: Apply "dropdown-hoverable" class after "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
                         <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                        
                         <!-- END NOTIFICATION DROPDOWN -->
                         <li class="separator hide"> </li>
                         <!-- BEGIN INBOX DROPDOWN -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                      
                         <!-- END INBOX DROPDOWN -->
                         @*<li class="separator hide"> </li>*@
                         <!-- BEGIN TODO DROPDOWN -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                        
                         <!-- END TODO DROPDOWN -->
                         <!-- BEGIN USER LOGIN DROPDOWN -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <li class="dropdown dropdown-user dropdown-dark">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <span class="username username-hide-on-mobile"> Nick </span>
+                                <span class="username username-hide-on-mobile">@ViewBag.userName </span>
                                 <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                                 <img alt="" class="img-circle" src="../assets/layouts/layout4/img/avatar9.jpg" />
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
                                 <li>
-                                    <a href="page_user_profile_1.html">
+                                    <a href="/User/UserEdit/@ViewBag.userID">
                                         <i class="icon-user"></i>Profilim
                                     </a>
                                 </li>
-                                
-                              
-                                @*<li class="divider"> </li>*@
-                               
+
+
+
+                                <li class="divider"> </li>
+
                                 <li>
                                     <a href="~/User/LogOut">
                                         <i class="icon-key"></i> Çıkış Yap
@@ -109,7 +108,10 @@
                         </li>
                         <!-- END USER LOGIN DROPDOWN -->
                         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                       
+                        <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                            <span class="sr-only">Toggle Quick Sidebar</span>
+                            <i class="icon-logout"></i>
+                        </li>
                         <!-- END QUICK SIDEBAR TOGGLER -->
                     </ul>
                 </div>
@@ -125,6 +127,7 @@
     <!-- END HEADER & CONTENT DIVIDER -->
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
+
         <!-- BEGIN SIDEBAR -->
         <div class="page-sidebar-wrapper">
             <!-- BEGIN SIDEBAR -->
@@ -138,8 +141,10 @@
                 <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
                 <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                 <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                @Html.Partial("LeftSideBarMenuPartialView")
+                @*<ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 
+                    
                     <li class="heading">
                         <h3 class="uppercase">Ayarlar</h3>
                     </li>
@@ -160,21 +165,51 @@
                     </li>
                     <li class="nav-item  ">
                         <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="icon-puzzle"></i>
-                            <span class="title">Components</span>
+                            <i class="icon-diamond"></i>
+                            <span class="title">Kullanıcı İşlemleri</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="components_date_time_pickers.html" class="nav-link ">
-                                    <span class="title">Date & Time Pickers</span>
+                                <a href="/User/Users" class="nav-link ">
+                                    <span class="title">Kullanıcı Listesi</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-diamond"></i>
+                            <span class="title">Kategori İşlemleri</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="/Category/Categories" class="nav-link ">
+                                    <span class="title">Kategori  Listele</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-puzzle"></i>
+                            <span class="title">Yorumlar</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="/Comment/Comments" class="nav-link ">
+                                    <span class="title">Yorum Listele</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
 
-                </ul>
+                </ul>*@
                 <!-- END SIDEBAR MENU -->
             </div>
             <!-- END SIDEBAR -->
@@ -188,20 +223,20 @@
                 <div class="page-head">
                     <!-- BEGIN PAGE TITLE -->
                     @*<div class="page-title">
-                        <h1>
-                            Blank Page Layout
-                            <small>blank page layout</small>
-                        </h1>
-                    </div>*@
+                            <h1>
+                                Blank Page Layout
+                                <small>blank page layout</small>
+                            </h1>
+                        </div>*@
                     <!-- END PAGE TITLE -->
                     <!-- BEGIN PAGE TOOLBAR -->
-                    <div class="page-toolbar">
-                        <!-- BEGIN THEME PANEL -->
-                        <!-- END PAGE TOOLBAR -->
-                    </div>
-                    <!-- END PAGE HEAD-->
-                    <!-- BEGIN PAGE BREADCRUMB -->
-                    @*<ul class="page-breadcrumb breadcrumb">
+                    @*<div class="page-toolbar">*@
+                    <!-- BEGIN THEME PANEL -->
+                    <!-- END PAGE TOOLBAR -->
+                </div>
+                <!-- END PAGE HEAD-->
+                <!-- BEGIN PAGE BREADCRUMB -->
+                @*<ul class="page-breadcrumb breadcrumb">
                         <li>
                             <a href="index.html">Home</a>
                             <i class="fa fa-circle"></i>
@@ -214,36 +249,37 @@
                             <span class="active">Page Layouts</span>
                         </li>
                     </ul>*@
-                    <!-- END PAGE BREADCRUMB -->
-                    <!-- BEGIN PAGE BASE CONTENT -->
-                    @RenderBody()
-                    @*<div class="note note-info">
+                <!-- END PAGE BREADCRUMB -->
+                <!-- BEGIN PAGE BASE CONTENT -->
+                @*<div class="note note-info">
                         <p> A black page template with a minimal dependency assets to use as a base for any custom page you create </p>
 
                     </div>*@
-                    <!-- END PAGE BASE CONTENT -->
-                </div>
-                <!-- END CONTENT BODY -->
+                @RenderBody()
+                <!-- END PAGE BASE CONTENT -->
             </div>
-            <!-- END CONTENT -->
-            <!-- BEGIN QUICK SIDEBAR -->
-            <!-- END QUICK SIDEBAR -->
+            <!-- END CONTENT BODY -->
         </div>
-        <!-- END CONTAINER -->
-        <!-- BEGIN FOOTER -->
-        @*<div class="page-footer">
-            <div class="page-footer-inner">
-                2016 &copy; Metronic Theme By
-                <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
-                <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
-            </div>
-            <div class="scroll-to-top">
-                <i class="icon-arrow-up"></i>
-            </div>
-        </div>*@
-        <!-- END FOOTER -->
-        <!-- BEGIN QUICK NAV -->
-        @*<nav class="quick-nav">
+        <!-- END CONTENT -->
+        <!-- BEGIN QUICK SIDEBAR -->
+        <!-- END QUICK SIDEBAR -->
+    </div>
+
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2016 &copy; Metronic Theme By
+            <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
+            <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN QUICK NAV -->
+    @*<nav class="quick-nav">
             <a class="quick-nav-trigger" href="#0">
                 <span aria-hidden="true"></span>
             </a>
@@ -275,51 +311,54 @@
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
         </nav>*@
-        <div class="quick-nav-overlay"></div>
-        <!-- END QUICK NAV -->
-        <!--[if lt IE 9]>
+    <div class="quick-nav-overlay"></div>
+    <!-- END QUICK NAV -->
+    <!--[if lt IE 9]>
     <script src="../assets/global/plugins/respond.min.js"></script>
     <script src="../assets/global/plugins/excanvas.min.js"></script>
     <script src="../assets/global/plugins/ie8.fix.min.js"></script>
     <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
-        <script src="~/Content/Admin/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="~/Content/Admin/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="~/Content/Admin/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="~/Content/Admin/assets/global/scripts/datatable.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-        <script src="~/Content/Admin/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <script>
-            $(document).ready(function () {
-                $('#clickmewow').click(function () {
-                    
-                    $('#radio1003').attr('checked', 'checked');
-                   
-                    $('#TagTbl').DataTable({});
-                });
-              
-            }
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="~/Content/Admin/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/datatables/pdfmake.min.js.map" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" type="text/javascript" ></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="~/Content/Admin/assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="~/Content/Admin/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+    <!-- END THEME LAYOUT SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="~/Content/Admin/assets/global/scripts/datatable.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
 
 
-        </script>
-       
+    <script>
+        $(document).ready(function () {
+            $('#clickmewow').click(function () {
+                $('#radio1003').attr('checked', 'checked');
+            });
+            $('#TagTbl').DataTable({});
+            $('#UserTbl').DataTable({});
+            $('#CategoryTbl').DataTable({});
+            $('#CommentTbl').DataTable
+            $('#RoleTbl').DataTable({});
+            $('#UserRoleTbl').DataTable({});
+        })</script>
 
-       
 </body>
+
 </html>
+@RenderSection("script", false)

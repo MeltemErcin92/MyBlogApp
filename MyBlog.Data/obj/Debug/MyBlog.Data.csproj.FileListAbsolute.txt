@@ -1,3 +1,4 @@
+C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.csproj.CoreCompileInputs.cache
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\MyBlog.Data.dll.config
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\MyBlog.Data.dll
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\MyBlog.Data.pdb
@@ -5,8 +6,7 @@ C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\EntityFramework.dll
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\EntityFramework.xml
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.csprojAssemblyReference.cache
-C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.csproj.CoreCompileInputs.cache
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.csproj.CopyComplete
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.dll
 C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.pdb
+C:\Users\acer\Desktop\MyBlogApp\MyBlog.Data\obj\Debug\MyBlog.Data.csprojAssemblyReference.cache

@@ -1,0 +1,121 @@
+﻿
+@{
+
+    ViewBag.Title = "Comments";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using MyBlog.Data.Model
+@model List<Comment>
+<div class="alert">
+    @if (TempData["Message"] != null)
+    {
+        <h3> @TempData["Message"]</h3>
+    }
+</div>
+<div id="CommentUpdatePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("CommentUpdatePartialView")
+</div>
+
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="icon-settings font-dark"></i>
+            <span class="caption-subject bold uppercase">Yorum Listesi</span>
+        </div>
+
+    </div>
+    <div class="portlet-body">
+
+        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="CommentTbl">
+            <thead>
+                <tr>
+                    <th>Sıralama</th>
+                    <th>Yorum içeriği </th>
+                    <th>Yorum sahibi </th>
+                    <th>Durum </th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 0;
+                }
+
+                @foreach (Comment c in Model)
+                {
+                    <tr class="odd gradeX">
+                        <td>
+
+                            @(++i)
+                        </td>
+                        <td>
+                            @c.CommentContext
+
+                        </td>
+
+                        <td>
+                            @c.NameSurname
+                        </td>
+
+
+                        @if (c.isActive == true)
+                        {
+                            <td>Aktif</td>
+                        }
+                        else
+                        {
+                            <td>Pasif</td>
+                        }
+
+
+
+                        <td class="col-md-2">
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    İşlemler
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-left" role="menu">
+
+                                    <li>
+                                        <a class="CommentUpdate" data-toggle="modal"
+                                           data-target="#CommentUpdatePopUp"
+                                           data-commentId="@c.CommentId"
+                                           data-commentActive="@c.isActive">
+                                            <i class="icon-tag"></i>  Yorum Düzenle
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Content/Admin/assets/global/plugins/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(".CommentUpdate").click(function () {
+
+        //parseInt--> convert.ToInt32()
+        var id = parseInt($(this).attr('data-commentId'));
+        //var isActive = $(this).attr('data-isActive');
+
+        if ($(this).attr('data-commentActive') == "True") {
+            document.getElementById("IsActiveTrue").checked = true;
+        }
+        else {
+            //$("#IsActiveFalse").attr('checked', 'checked');
+
+            document.getElementById("IsActiveFalse").checked = true;
+        }
+        $("#CommentIdUpdate").val(id);
+    })
+
+</script>

@@ -4,10 +4,22 @@
     ViewBag.Title = "Tags";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+
+<div class="alert">
+    @if (TempData["Message"] != null)
+    {
+        <h3> @TempData["Message"]</h3>
+    }
+</div>
 <div id="TagInsertPopUp" class="modal fade" tabindex="-1" aria-hidden="true">
     @Html.Partial("TagInsertPartialView")
 </div>
-
+<div id="TagDeletePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("TagDeletePartial")
+</div>
+<div id="TagUpdatePopUp" class="modal fade" tabindex="-1" aria-hidden="true">
+    @Html.Partial("TagUpdatePartial")
+</div>
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -52,85 +64,94 @@
 
                         @foreach (Tag tg in Model)
                         {
-                        <tr class="odd gradeX">
-                            <td>
+                            <tr class="odd gradeX">
+                                <td>
 
-                                @(++i)
-                            </td>
-                            <td>
-                                @tg.TagName
-                            </td>
+                                    @(++i)
+                                </td>
+                                <td>
+                                    @tg.TagName
+                                </td>
 
-                            <td>
-                                @tg.CreateDate
-                            </td>
-                            @if (tg.Status == true)
-                            {
-                                <td>Aktif</td>
-                            }
-                            else
-                            {
-                                <td>Pasif</td>
-                            }
+                                <td>
+                                    @tg.CreateDate
+                                </td>
+                                @if (tg.Status == true)
+                                {
+                                    <td>Aktif</td>
+                                }
+                                else
+                                {
+                                    <td>Pasif</td>
+                                }
 
 
-                            <td class="center">10</td>
-                            @*<td>
-        <div class="btn-group">
-            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                Actions
-                <i class="fa fa-angle-down"></i>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-docs" data-toggle="modal" href="#TagInsertPopUp"></i>
-                        Yeni Tag
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-tag"></i> Tag Düzenle
-                    </a>
-                </li>
-                @*<li class="divider"> </li>*@
-                            @*<li>
-                        <a href="javascript:;">
-                            <i class="icon-user"></i> Tag Sil
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </td>*@
-                            <td class="col-md-2">
-                                <div class="btn-group">
-                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown"
-                                            aria-expanded="false">
-                                        İşlemler
-                                        <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-left" role="menu">
-                                        <li>
-                                            <a data-toggle="modal"
-                                               href="#TagInsertPopUp">
-                                                <i class="icon-docs"></i> Yeni Tag
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="icon-tag"></i>  Tag Düzenle
-                                            </a>
-                                        </li>
-                                        <li class="divider"> </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="icon-user"></i> Tag Sil
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                                <td class="center">10</td>
+                                @*<td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                            Actions
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <i class="icon-docs" data-toggle="modal" href="#TagInsertPopUp"></i>
+                                                    Yeni Tag
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <i class="icon-tag"></i> Tag Düzenle
+                                                </a>
+                                            </li>
+                                            @*<li class="divider"> </li>*@
+                                @*<li>
+                                                    <a href="javascript:;">
+                                                        <i class="icon-user"></i> Tag Sil
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>*@
+                                <td class="col-md-2">
+                                    <div class="btn-group">
+                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown"
+                                                aria-expanded="false">
+                                            İşlemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu pull-left" role="menu">
+                                            <li>
+                                                <a data-toggle="modal"
+                                                   href="#TagInsertPopUp"
+                                                    data-id="@tg.TagId"
+                                                   data-Name="@tg.TagName"
+                                                   >
+                                                    <i class="icon-docs"></i> Yeni Tag
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="TagUpdate" data-toggle="modal"
+                                                   data-target="#TagUpdatePopUp"
+                                                    data-id="@tg.TagId" data-Name="@tg.TagName">
+                                                    <i class="icon-tag"></i>  Tag Düzenle
+                                                </a>
+                                            </li>
+                                            <li class="divider"> </li>
+                                            <li>
+                                                <a class="TagDelete"
+                                                   data-toggle="modal"
+                                                   data-target="#TagDeletePopUp"
+                                                   data-id="@tg.TagId" data-Name="@tg.TagName">
+                                                    <i class="icon-user"></i> Tag Sil
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
 
                         }
 
@@ -143,3 +164,28 @@
     </div>
 </div>
 
+<script src="~/Content/Admin/assets/global/plugins/jquery.min.js"></script>
+@section script{
+
+    <script type="text/javascript">
+            $(".TagDelete").click(function () {
+                var id = $(this).attr('data-id');
+                var TagName = $(this).attr('data-Name');
+                alert(TagName);
+                document.getElementById("tagDeletePopupSpan").innerHTML = TagName;
+                $("#tagDeletePopup").attr("data-id", id);
+                $("#tagDeletePopups").val(id);
+        })
+        $(".TagUpdate").click(function () {
+            var id = $(this).attr('data-id');
+            var TagName = $(this).attr('data-Name');
+            $("#tagDeletePopup").attr("data-id", id);
+          
+            $("#Tagname").val(TagName);
+       
+            $("#tagIdUpdate").val(id);
+         
+        })
+        
+    </script>
+}

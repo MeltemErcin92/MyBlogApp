@@ -20,7 +20,7 @@ namespace MyBlog.Data.Manager
         }
         public List<Article> GetArticlesWithTags(int tagId)
         {
-       
+
 //            string sqlQuery = @"
 //                                DECLARE @id int
 
@@ -29,11 +29,34 @@ namespace MyBlog.Data.Manager
 //";
 
             //var data = _Context.Database.SqlQuery<Article>(sqlQuery, id).ToList();
-         
+
 
             //return data;   
             //sql sorgusu iler çağır
-          return  _Context.Articles.Where(_ => _.Tags.Any(t => t.TagId == tagId)).ToList();
+            return  _Context.Articles.Where(_ => _.Tags.Any(t => t.TagId == tagId)).ToList();
+        }
+        public int AddTag(Tag t)
+        {
+          
+            var tag1 = _Context.Tags.Where(_ => _.TagName.ToUpper() == t.TagName.ToUpper()).FirstOrDefault();
+           
+            if (tag1 !=null)
+                return -1;
+            t.CreateDate = GetNow;
+            _Context.Tags.Add(t);
+            return _Context.SaveChanges();
+        }
+        public int TagDelete(int id)
+        {
+            var deger = _Context.Tags.Where(_ => _.TagId ==id).FirstOrDefault();
+            _Context.Tags.Remove(deger);
+            return _Context.SaveChanges();
+        }
+        public int TagUpdate(Tag t)
+        {
+            var tag = _Context.Tags.Where(_ => _.TagId == t.TagId).FirstOrDefault();
+            tag.TagName = t.TagName;
+            return _Context.SaveChanges();
         }
         
     }

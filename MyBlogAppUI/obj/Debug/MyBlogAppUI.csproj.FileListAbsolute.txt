@@ -1,3 +1,4 @@
+C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\obj\Debug\MyBlogAppUI.csproj.CoreCompileInputs.cache
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\bin\MyBlogAppUI.dll.config
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\bin\MyBlogAppUI.dll
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\bin\MyBlogAppUI.pdb
@@ -181,7 +182,6 @@ C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\bin\System.Web.Helpers.xml
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\bin\System.Web.Mvc.xml
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\obj\Debug\MyBlogAppUI.csprojAssemblyReference.cache
-C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\obj\Debug\MyBlogAppUI.csproj.CoreCompileInputs.cache
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\obj\Debug\MyBlogAppUI.csproj.CopyComplete
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\obj\Debug\MyBlogAppUI.dll
 C:\Users\acer\Desktop\MyBlogApp\MyBlogAppUI\obj\Debug\MyBlogAppUI.pdb

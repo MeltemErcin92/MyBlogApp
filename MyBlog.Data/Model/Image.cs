@@ -13,7 +13,7 @@ namespace MyBlog.Data.Model
         public Image()
         {
             Articles = new HashSet<Article>();
-            Users = new HashSet<User>();
+        
         }
 
         public int ImageId { get; set; }
@@ -32,7 +32,6 @@ namespace MyBlog.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        
     }
 }

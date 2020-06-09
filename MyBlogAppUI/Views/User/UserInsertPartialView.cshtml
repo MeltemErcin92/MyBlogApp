@@ -1,0 +1,229 @@
+﻿@using MyBlog.Data.Model
+@model List<Role>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Kullanıcı Ekleme</h4>
+        </div>
+        <form action="/User/InsertUser/" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+
+            <div class="modal-body">
+                <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                    <div class="row">
+
+                        <div class="form-body">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Adı</label>
+                                    <div class="col-md-9" id="nameDiv">
+                                        <input type="text" class="form-control spinner" name="Name" id="name" required
+                                               placeholder="Ad giriniz">
+                                        <span class="help-block" id="nameError" style="display:none">Adı alanı boş geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Soyadı</label>
+                                    <div class="col-md-9" id="surNameDiv">
+                                        <input type="text" class="form-control spinner" required
+                                               name="Surname" id="surName"
+                                               placeholder="Soyad giriniz">
+                                        <span class="help-block" id="surNameError" style="display:none">Soyadı alanı boş geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Kullanıcı Adı</label>
+                                    <div class="col-md-9" id="userNameDiv">
+                                        <input type="text" class="form-control spinner" required
+                                               name="username" id="userName"
+                                               placeholder="Kullanıcı adını giriniz">
+                                        <span class="help-block" id="userNameError" style="display:none">Kullanıcı adı boş geçilemez</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Şifre</label>
+                                    <div class="col-md-9" id="passwordDiv">
+                                        <input type="text" class="form-control spinner" required
+                                               name="password"
+                                               id="password"
+                                               placeholder="Şifre giriniz">
+                                        <span class="help-block" id="passwordError" style="display:none">Şifre boş geçilemez</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Email </label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control spinner"
+                                               name="EmailAdress"
+                                               placeholder="Email giriniz">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Fotoğraf Ekle </label>
+                                    <div class="col-md-9">
+                                        <input type="file" class="form-control spinner"
+                                               name="imagePath"
+                                               >
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Cinsiyet</label>
+                                    <label class="col-md-1 control-label">Erkek</label>
+                                    <div class="col-md-3">
+                                        <input type="radio" class="form-control spinner"
+                                               name="Gender">
+                                    </div>
+
+                                    <label class="col-md-1 control-label">Kadın</label>
+                                    <div class="col-md-3">
+                                        <input type="radio" class="form-control spinner"
+                                               name="Gender">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Rol Adı</label>
+                                    <div class="col-md-9" id="nameDiv">
+                                        <select name="RoleId">
+                                            @foreach (Role r in Model)
+                                            {
+                                                <option value="@r.RoleId">
+                                                    @r.RoleName
+                                                </option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
+                <button type="submit" class="btn green" onclick="checkValidation()">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/Content/Admin/global/plugins/jquery.min.js"></script>
+<script>
+
+
+    function checkValidation() {
+
+        if ($("#Name").val() == "") {
+            $("#nameDiv").attr('class', 'col-md-9 has-error');
+            $("#nameError").css('display', 'block');
+        }
+
+
+        if ($("#Surname").val() == "") {
+            $("#surNameDiv").attr('class', 'col-md-9 has-error');
+            $("#surNameError").css('display', 'block');
+        }
+
+
+        if ($("#username").val() == "") {
+            $("#userNameDiv").attr('class', 'col-md-9 has-error');
+            $("#userNameError").css('display', 'block');
+        }
+
+
+        if ($("#password").val() == "") {
+            $("#passwordDiv").attr('class', 'col-md-9 has-error');
+            $("#passwordError").css('display', 'block');
+        }
+
+
+
+
+    }
+
+
+
+    $(document).ready(function () {
+
+
+        $("#Name").on('input', function () {
+            if ($("#Name").val() != "") {
+                $("#nameDiv").attr('class', 'col-md-9');
+                $("#nameError").css('display', 'none');
+            }
+            else {
+                $("#nameDiv").attr('class', 'col-md-9 has-error');
+                $("#nameError").css('display', 'block');
+            }
+        })
+
+
+        $("#Surname").on('input', function () {
+            if ($("#Surname").val() != "") {
+                $("#surNameDiv").attr('class', 'col-md-9');
+                $("#surNameError").css('display', 'none');
+            }
+            else {
+                $("#surNameDiv").attr('class', 'col-md-9 has-error');
+                $("#surNameError").css('display', 'block');
+            }
+        })
+
+
+        $("#username").on('input', function () {
+            if ($("#username").val() != "") {
+                $("#userNameDiv").attr('class', 'col-md-9');
+                $("#userNameError").css('display', 'none');
+            }
+            else {
+                $("#userNameDiv").attr('class', 'col-md-9 has-error');
+                $("#userNameError").css('display', 'block');
+            }
+        })
+
+
+
+        $("#password").on('input', function () {
+            if ($("#password").val() != "") {
+                $("#passwordDiv").attr('class', 'col-md-9');
+                $("#passwordError").css('display', 'none');
+            }
+            else {
+                $("#passwordDiv").attr('class', 'col-md-9 has-error');
+                $("#passwordError").css('display', 'block');
+            }
+        })
+
+    })
+
+</script>
+
